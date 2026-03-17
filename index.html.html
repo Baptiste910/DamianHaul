@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8.4KG HAUL — Dalaj lama</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0D0D0D;
+  --bg2: #141414;
+  --bg3: #1A1A1A;
+  --surface: #1F1F1F;
+  --border: #2A2A2A;
+  --border2: #333;
+  --text: #E8E8E8;
+  --muted: #666;
+  --dim: #444;
+  --green: #B8FF57;
+  --green-dim: rgba(184,255,87,0.08);
+  --green-border: rgba(184,255,87,0.2);
+  --red: #FF4D4D;
+  --red-dim: rgba(255,77,77,0.08);
+  --white: #fff;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-rows:1fr auto;position:relative;overflow:hidden;border-bottom:1px solid var(--border);}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 70% 40%,rgba(184,255,87,0.04) 0%,transparent 70%);}
+.hero-content{display:flex;flex-direction:column;justify-content:center;padding:80px 48px 40px;position:relative;z-index:1;}
+.hero-tag{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--green);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:32px;opacity:0;animation:fadeIn 0.5s 0.1s forwards;}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(80px,15vw,200px);line-height:0.9;letter-spacing:-0.01em;color:var(--white);opacity:0;animation:slideUp 0.6s 0.2s ease forwards;}
+.hero-title span{color:var(--green);display:block;}
+.hero-subtitle{font-size:clamp(14px,2vw,18px);color:var(--muted);font-weight:300;margin-top:20px;max-width:500px;line-height:1.6;opacity:0;animation:fadeIn 0.5s 0.5s forwards;}
+.hero-image-wrap{position:absolute;right:0;top:0;bottom:0;width:42%;overflow:hidden;}
+.hero-image-wrap img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(20%) brightness(0.7);}
+.hero-image-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--bg) 0%,transparent 40%);}
+.hero-stats-bar{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);position:relative;z-index:1;}
+.hero-stat{padding:24px 32px;border-right:1px solid var(--border);opacity:0;animation:fadeIn 0.5s forwards;}
+.hero-stat:nth-child(1){animation-delay:0.6s}
+.hero-stat:nth-child(2){animation-delay:0.7s}
+.hero-stat:nth-child(3){animation-delay:0.8s}
+.hero-stat:nth-child(4){animation-delay:0.9s;border-right:none;}
+.stat-val{font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--white);display:block;line-height:1;}
+.stat-val.green{color:var(--green);}
+.stat-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);display:block;margin-top:6px;}
+
+@media(max-width:800px){
+  .hero-image-wrap{display:none;}
+  .hero-content{padding:80px 24px 32px;}
+  .hero-stats-bar{grid-template-columns:repeat(2,1fr);}
+  .hero-stat:nth-child(2){border-right:none;}
+  .hero-stat:nth-child(4){border-right:none;}
+}
+
+/* SHIPPING */
+.shipping{padding:80px 48px;max-width:1200px;margin:0 auto;}
+@media(max-width:800px){.shipping{padding:48px 24px;}}
+.section-header{display:flex;align-items:center;gap:16px;margin-bottom:40px;}
+.section-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--green);letter-spacing:0.1em;}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,5vw,52px);color:var(--white);letter-spacing:0.02em;}
+.section-line{flex:1;height:1px;background:var(--border);}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:48px;}
+.info-cell{background:var(--bg2);padding:20px 18px;}
+.info-key{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.info-val{font-size:15px;font-weight:600;color:var(--text);}
+.info-val.accent{color:var(--green);font-size:18px;}
+.box-photo{width:100%;max-width:420px;margin-bottom:48px;position:relative;overflow:hidden;border:1px solid var(--border);cursor:pointer;}
+.box-photo img{width:100%;height:320px;object-fit:cover;display:block;filter:grayscale(15%);transition:transform 0.5s ease,filter 0.3s;}
+.box-photo:hover img{transform:scale(1.03);filter:grayscale(0%);}
+.timeline{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;}
+.timeline::-webkit-scrollbar{display:none;}
+.tl-step{flex:1;min-width:140px;padding:20px 16px;background:var(--bg2);border:1px solid var(--border);border-right:none;transition:background 0.2s;}
+.tl-step:last-child{border-right:1px solid var(--border);}
+.tl-step:hover{background:var(--bg3);}
+.tl-dot{width:8px;height:8px;border-radius:50%;background:var(--green);margin-bottom:16px;box-shadow:0 0 12px var(--green);}
+.tl-date{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);margin-bottom:6px;display:block;}
+.tl-label{font-size:13px;font-weight:600;color:var(--text);}
+
+/* NAV */
+.sticky-nav{position:sticky;top:0;z-index:100;background:rgba(13,13,13,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;}
+.sticky-nav::-webkit-scrollbar{display:none;}
+.nav-inner{display:flex;max-width:1200px;margin:0 auto;padding:0 48px;}
+@media(max-width:800px){.nav-inner{padding:0 16px;}}
+.nav-link{padding:14px 16px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.15s;}
+.nav-link:hover{color:var(--green);border-bottom-color:var(--green);}
+
+/* CATEGORY */
+.cat-divider{max-width:1200px;margin:80px auto 0;padding:0 48px;border-top:1px solid var(--border);padding-top:60px;}
+@media(max-width:800px){.cat-divider{padding:48px 24px 0;margin-top:48px;}}
+.cat-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,8vw,96px);color:var(--white);letter-spacing:0.02em;line-height:1;}
+.cat-count{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);margin-top:8px;}
+
+/* ITEM */
+.item-wrap{max-width:1200px;margin:0 auto;padding:48px 48px;border-bottom:1px solid var(--border);}
+@media(max-width:800px){.item-wrap{padding:40px 24px;}}
+.item-meta{display:flex;align-items:center;gap:12px;margin-bottom:24px;flex-wrap:wrap;}
+.item-idx{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.08em;}
+.item-tag{font-family:'JetBrains Mono',monospace;font-size:9px;padding:3px 8px;border-radius:2px;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;}
+.tag-green{background:var(--green-dim);color:var(--green);border:1px solid var(--green-border);}
+.tag-fire{background:rgba(255,140,0,0.08);color:#FF8C00;border:1px solid rgba(255,140,0,0.2);}
+.tag-tts{background:rgba(100,200,255,0.08);color:#64C8FF;border:1px solid rgba(100,200,255,0.2);}
+.item-heading{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,64px);color:var(--white);line-height:1;letter-spacing:0.02em;margin-bottom:4px;}
+.item-subheading{font-size:14px;color:var(--muted);font-weight:400;margin-bottom:32px;}
+.item-price-big{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,4vw,48px);color:var(--green);letter-spacing:0.02em;margin-left:auto;}
+.item-layout{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:24px;}
+@media(max-width:700px){.item-layout{grid-template-columns:1fr;}}
+.item-photo{background:var(--bg2);overflow:hidden;cursor:pointer;position:relative;min-height:300px;}
+.item-photo img{width:100%;height:100%;min-height:300px;object-fit:cover;display:block;filter:grayscale(10%);transition:transform 0.5s ease,filter 0.3s;}
+.item-photo:hover img{transform:scale(1.04);filter:grayscale(0%);}
+.photo-label{position:absolute;bottom:0;left:0;right:0;padding:12px 14px;background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+.photo-label a{color:var(--green);text-decoration:none;}
+.item-specs-panel{background:var(--bg2);padding:28px;display:flex;flex-direction:column;gap:0;}
+.spec-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);}
+.spec-row:last-child{border-bottom:none;}
+.spec-k{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);flex-shrink:0;}
+.spec-v{font-size:13px;font-weight:500;color:var(--text);text-align:right;}
+.spec-v a{color:var(--green);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:11px;}
+.spec-v a:hover{text-decoration:underline;}
+
+/* RATING */
+.rating-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:1px;}
+.rating-cell{background:var(--bg2);padding:20px;text-align:center;}
+.rating-num{font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--green);line-height:1;display:block;}
+.rating-denom{font-size:12px;color:var(--muted);}
+.rating-cat{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-top:4px;display:block;}
+
+/* PROS/CONS */
+.pc-row{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-top:none;margin-bottom:24px;}
+@media(max-width:500px){.pc-row{grid-template-columns:1fr;}}
+.pc-block{background:var(--bg2);padding:20px;}
+.pc-title{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.pc-title::before{content:'';width:16px;height:2px;display:block;}
+.pc-title.plus{color:var(--green);}
+.pc-title.plus::before{background:var(--green);}
+.pc-title.minus{color:var(--red);}
+.pc-title.minus::before{background:var(--red);}
+.pc-block ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.pc-block ul li{font-size:13px;color:var(--muted);line-height:1.5;padding-left:14px;position:relative;}
+.pc-block.pros ul li::before{content:'↑';position:absolute;left:0;color:var(--green);font-size:11px;}
+.pc-block.cons ul li::before{content:'↓';position:absolute;left:0;color:var(--red);font-size:11px;}
+
+/* FEEDBACK */
+.feedback-block{border:1px solid var(--green-border);background:var(--green-dim);padding:20px 24px;margin-bottom:24px;position:relative;}
+.feedback-block::before{content:'"';position:absolute;top:-10px;left:20px;font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--green);line-height:1;}
+.feedback-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--green);margin-bottom:10px;}
+.feedback-text{font-size:14px;color:rgba(232,232,232,0.8);line-height:1.7;}
+
+/* BUTTONS */
+.w2c-row{display:flex;gap:8px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:11px 20px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;font-weight:700;transition:all 0.15s;border:1px solid transparent;}
+.btn-green{background:var(--green);color:var(--bg);}
+.btn-green:hover{background:#d4ff7a;}
+.btn-outline{background:transparent;border-color:var(--border2);color:var(--muted);}
+.btn-outline:hover{border-color:var(--green);color:var(--green);}
+
+/* SIZE TABLE */
+.size-table-wrap{border:1px solid var(--border);margin-bottom:24px;overflow:hidden;}
+.size-table-title{background:var(--bg3);padding:12px 16px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border);}
+.size-table{width:100%;border-collapse:collapse;}
+.size-table th{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);padding:10px 14px;border-bottom:1px solid var(--border);text-align:left;background:var(--bg2);}
+.size-table td{padding:10px 14px;font-size:13px;color:var(--text);border-bottom:1px solid var(--border);}
+.size-table tr:last-child td{border-bottom:none;}
+.size-table tr:hover td{background:var(--bg3);}
+
+/* VERDICT */
+.verdict{background:var(--green);padding:100px 48px;position:relative;overflow:hidden;}
+@media(max-width:800px){.verdict{padding:64px 24px;}}
+.verdict::before{content:'10/10';position:absolute;right:-20px;bottom:-60px;font-family:'Bebas Neue',sans-serif;font-size:280px;color:rgba(0,0,0,0.06);line-height:1;pointer-events:none;letter-spacing:-0.02em;}
+.verdict-inner{max-width:800px;}
+.verdict-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(0,0,0,0.5);margin-bottom:20px;}
+.verdict-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,8vw,100px);color:var(--bg);line-height:0.95;letter-spacing:0.02em;margin-bottom:24px;}
+.verdict-text{font-size:16px;color:rgba(0,0,0,0.65);line-height:1.8;max-width:600px;margin-bottom:40px;}
+.btn-dark{background:var(--bg);color:var(--green);border:none;padding:14px 28px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;font-weight:700;display:inline-block;transition:background 0.15s;}
+.btn-dark:hover{background:#111;}
+
+/* FOOTER */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:32px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+@media(max-width:800px){footer{padding:24px;}}
+footer p{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);}
+
+/* VIDEO PLAYER */
+.video-wrap{position:relative;background:#000;border:1px solid var(--border);margin-bottom:1px;overflow:hidden;}
+.video-wrap video{width:100%;display:block;max-height:480px;object-fit:cover;}
+.video-label{position:absolute;top:12px;left:12px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);background:rgba(0,0,0,0.6);padding:4px 8px;}
+
+/* LIGHTBOX */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:10000;align-items:center;justify-content:center;cursor:zoom-out;}
+.lightbox.active{display:flex;}
+.lightbox img{max-width:90vw;max-height:90vh;object-fit:contain;}
+.lightbox-close{position:absolute;top:20px;right:24px;color:var(--green);font-family:'JetBrains Mono',monospace;font-size:20px;cursor:pointer;letter-spacing:0.1em;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.reveal.visible{opacity:1;transform:none;}
+
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes slideUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:none;}}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-image-wrap">
+    <img src="haul_unboxing.png" alt="8.4kg Haul">
+  </div>
+  <div class="hero-content">
+    <p class="hero-tag">// Dalaj lama × OOPBUY — SSF-DHL-SK-1 — 2026</p>
+    <h1 class="hero-title">8.4<span>KG</span></h1>
+    <p class="hero-subtitle">Moja peňaženka plače, ale ja som spokojný.<br>8 itemov, 32 dní, všetko 10/10.</p>
+    <div style="margin-top:32px;max-width:480px;">
+      <div class="video-wrap" style="border-radius:0;">
+        <span class="video-label">// Intro — celý haul</span>
+        <video controls playsinline preload="metadata">
+          <source src="vid_intro.mov" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+  <div class="hero-stats-bar">
+    <div class="hero-stat"><span class="stat-val">8</span><span class="stat-label">Itemov</span></div>
+    <div class="hero-stat"><span class="stat-val green">€293</span><span class="stat-label">Cena vecí</span></div>
+    <div class="hero-stat"><span class="stat-val green">€79</span><span class="stat-label">Shipping (po kupóne)</span></div>
+    <div class="hero-stat"><span class="stat-val">32</span><span class="stat-label">Dní doručenia</span></div>
+  </div>
+</section>
+
+<!-- SHIPPING -->
+<section class="shipping" id="shipping">
+  <div class="section-header reveal">
+    <span class="section-num">// 00</span>
+    <h2 class="section-title">Shipping & Info</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="info-grid reveal">
+    <div class="info-cell"><p class="info-key">Shipping linka</p><p class="info-val accent">SSF-DHL-SK-1</p></div>
+    <div class="info-cell"><p class="info-key">Agent</p><p class="info-val">OOPBUY</p></div>
+    <div class="info-cell"><p class="info-key">Váha (actual)</p><p class="info-val">8,400 g</p></div>
+    <div class="info-cell"><p class="info-key">Váha (volumetric)</p><p class="info-val">70,602 cm³/kg</p></div>
+    <div class="info-cell"><p class="info-key">Rozmery balíka</p><p class="info-val">42 × 41 × 41 cm</p></div>
+    <div class="info-cell"><p class="info-key">Cena vecí</p><p class="info-val">$214.85 / €202.68</p></div>
+    <div class="info-cell"><p class="info-key">Shipping (plný)</p><p class="info-val">$130.66 / €113.45</p></div>
+    <div class="info-cell"><p class="info-key">Shipping (po kupóne)</p><p class="info-val accent">$91.44 / €79.41</p></div>
+    <div class="info-cell"><p class="info-key">Kupón</p><p class="info-val">Zowa −34,04€</p></div>
+    <div class="info-cell"><p class="info-key">Stav balíka</p><p class="info-val accent">Bez poškodenia ✓</p></div>
+  </div>
+  <div class="box-photo reveal" onclick="openLightbox('haul_box.jpg')">
+    <img src="haul_box.jpg" alt="Príchod balíka">
+    <div class="photo-label">Klikni pre zväčšenie ↗</div>
+  </div>
+  <div class="section-header reveal" style="margin-bottom:16px;">
+    <span class="section-num">// timeline</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="timeline reveal">
+    <div class="tl-step"><div class="tl-dot"></div><span class="tl-date">07. 02. 2026 — 18:49</span><p class="tl-label">Parcel Submitted</p></div>
+    <div class="tl-step"><div class="tl-dot"></div><span class="tl-date">06. 03. 2026 — 10:33</span><p class="tl-label">Spracované v centre</p></div>
+    <div class="tl-step"><div class="tl-dot"></div><span class="tl-date">11. 03. 2026 — 11:49</span><p class="tl-label">Doručené ✓</p></div>
+  </div>
+</section>
+
+<!-- NAV -->
+<nav class="sticky-nav">
+  <div class="nav-inner">
+    <a class="nav-link" href="#topanky">Topánky</a>
+    <a class="nav-link" href="#nb2002r">NB 2002R</a>
+    <a class="nav-link" href="#nb9060">NB 9060</a>
+    <a class="nav-link" href="#asics">Asics</a>
+    <a class="nav-link" href="#nikep6000">Nike P-6000</a>
+    <a class="nav-link" href="#mikiny">Mikiny</a>
+    <a class="nav-link" href="#blcg">Balenciaga</a>
+    <a class="nav-link" href="#vetements">Vetements</a>
+    <a class="nav-link" href="#doplnky">Doplnky</a>
+    <a class="nav-link" href="#chromeh">Chrome Hearts</a>
+    <a class="nav-link" href="#burberry">Burberry</a>
+  </div>
+</nav>
+
+<!-- TOPÁNKY -->
+<div class="cat-divider reveal" id="topanky">
+  <p class="cat-count">// 01 — 04</p>
+  <h2 class="cat-name">Topánky</h2>
+</div>
+
+<!-- NB 2002R -->
+<div class="item-wrap reveal" id="nb2002r">
+  <div class="item-meta">
+    <span class="item-idx">01 / 08</span>
+    <span class="item-tag tag-fire">🔥 10/10</span>
+    <span class="item-tag tag-tts">TTS ✓</span>
+    <span class="item-price-big">€27.87</span>
+  </div>
+  <h3 class="item-heading">New Balance 2002R</h3>
+  <p class="item-subheading">Protection Pack "Rain Cloud" — Sivá / Biela — EU 46.5</p>
+  <div class="item-layout">
+    <div class="item-photo" onclick="openLightbox('nb2002r.png')">
+      <img src="nb2002r.png" alt="New Balance 2002R">
+      <div class="photo-label">Vlastná fotka — klikni ↗</div>
+    </div>
+    <div class="item-specs-panel">
+      <div class="spec-row"><span class="spec-k">Veľkosť</span><span class="spec-v">46.5 EU</span></div>
+      <div class="spec-row"><span class="spec-k">Farba</span><span class="spec-v">Sivá / Biela</span></div>
+      <div class="spec-row"><span class="spec-k">Váha</span><span class="spec-v">1152g / 945g bez boxu</span></div>
+      <div class="spec-row"><span class="spec-k">Cena</span><span class="spec-v">€27.87 / ¥220 / 670 CZK</span></div>
+      <div class="spec-row"><span class="spec-k">Ship do WH</span><span class="spec-v">3 dni</span></div>
+      <div class="spec-row"><span class="spec-k">QC fotky</span><span class="spec-v"><a href="https://imgur.com/a/Yjwnt0m" target="_blank">↗ Imgur</a></span></div>
+      <div class="spec-row"><span class="spec-k">Weidian</span><span class="spec-v"><a href="https://weidian.com/item.html?itemID=7611477107" target="_blank">↗ Raw link</a></span></div>
+      <div class="spec-row"><span class="spec-k">OOPBUY</span><span class="spec-v"><a href="https://oopbuy.com/product/weidian/7611477107?originKeywordUrl=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7611477107&goods%3FinviteCode=XRRHAYES6" target="_blank">↗ OOPBUY</a></span></div>
+    </div>
+  </div>
+  <div class="video-wrap">
+    <span class="video-label">// New Balance 2002R — video</span>
+    <video controls playsinline preload="metadata">
+      <source src="vid_nb2002r.mov" type="video/mp4">
+    </video>
+  </div>
+  <div class="rating-row">
+    <div class="rating-cell"><span class="rating-num">10</span><span class="rating-denom">/10</span><span class="rating-cat">Kvalita</span></div>
+    <div class="rating-cell"><span class="rating-num">10</span><span class="rating-denom">/10</span><span class="rating-cat">Comfort</span></div>
+    <div class="rating-cell"><span class="rating-num">10</span><span class="rating-denom">/10</span><span class="rating-cat">Presnosť</span></div>
+  </div>
+  <div class="pc-row">
+    <div class="pc-block pros"><p class="pc-title plus">Plusy</p><ul><li>Extrémne mäkká podrážka</li><li>Skvelé na beh/nosenie</li></ul></div>
+    <div class="pc-block cons"><p class="pc-title minus">Mínusy</p><ul><li>Žiadne</li></ul></div>
+  </div>
+  <div class="feedback-block">
+    <p class="feedback-label">// Môj feedback</p>
+    <p class="feedback-text">Špičkové spracovanie a neskutočne pohodlné. Naživo vyzerajú ešte lepšie než na fotkách. 10/10!</p>
+  </div>
+  <div class="w2c-row">
+    <a href="https://oopbuy.com/product/weidian/7611477107?originKeywordUrl=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7611477107&goods%3FinviteCode=XRRHAYES6" class="btn btn-green" target="_blank">W2C — OOPBUY ↗</a>
+    <a href="https://weidian.com/item.html?itemID=7611477107" class="btn btn-outline" target="_blank">Weidian direct</a>
+  </div>
+</div>
+
+<!-- NB 9060 -->
+<div class="item-wrap reveal" id="nb9060">
+  <div class="item-meta">
+    <span class="item-idx">02 / 08</span>
+    <span class="item-tag tag-fire">🔥 10/10</span>
+    <span class="item-tag tag-tts">TTS ✓</span>
+    <span class="item-price-big">€25.34</span>
+  </div>
+  <h3 class="item-heading">New Balance 9060</h3>
+  <p class="item-subheading">"Sea Salt" — Béžová / Biela — EU 39.5</p>
+  <div class="item-layout" style="grid-template-columns:1fr">
+    <div class="item-specs-panel">
+      <div class="spec-row"><span class="spec-k">Veľkosť</span><span class="spec-v">39.5 EU</span></div>
+      <div class="spec-row"><span class="spec-k">Farba</span><span class="spec-v">Béžová / Biela</span></div>
+      <div class="spec-row"><span class="spec-k">Váha</span><span class="spec-v">891g / 729g bez boxu</span></div>
+      <div class="spec-row"><span class="spec-k">Cena</span><span class="spec-v">€25.34 / ¥200 / 601 CZK</span></div>
+      <div class="spec-row"><span class="spec-k">Ship do WH</span><span class="spec-v">3 dni</span></div>
+      <div class="spec-row"><span class="spec-k">QC fotky</span><span class="spec-v"><a href="https://imgur.com/a/IvSID99" target="_blank">↗ Imgur</a></span></div>
+      <div class="spec-row"><span class="spec-k">Weidian</span><span class="spec-v"><a href="https://weidian.com/item.html?itemID=7614453190" target="_blank">↗ Raw link</a></span></div>
+      <div class="spec-row"><span class="spec-k">OOPBUY</span><span class="spec-v"><a href="https://oopbuy.com/product/weidian/7614453190?originKeywordUrl=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7614453190&goods%3FinviteCode=XRRHAYES6" target="_blank">↗ OOPBUY</a></span></div>
+    </div>
+  </div>
+  <div class="video-wrap">
+    <span class="video-label">// New Balance 9060 — video</span>
+    <video controls playsinline preload="metadata">
+      <source src="vid_nb9060.mov" type="video/mp4">
+    </video>
+  </div>
+  <div class="rating-row">
+    <div class="rating-cell"><span class="rating-num">10</span><span class="rating-denom">/10</span><span class="rating-cat">Kvalita</span></div>
+    <div class="rating-cell"><span class="rating-num">10</span><span class="rating-denom">/10</span><span class="rating-cat">Comfort</span></div>
+    <div class="rating-cell"><span class="rating-num">10</span><span class="rating-denom">/10</span><span class="rating-cat">Presnosť</span></div>
+  </div>
+  <div class="pc-row">
+    <div class="pc-block pros"><p class="pc-title plus">Plusy</p><ul><li>Extrémne mäkká podrážka</li><li>Skvelé na beh/nosenie</li></ul></div>
+    <div class="pc-block cons"><p class="pc-title minus">Mínusy</p><ul><li>Žiadne</li></ul></div>
+  </div>
+  <div class="feedback-block">
+    <p class="feedback-label">// Môj feedback</p>
+    <p class="feedback-text">Dizajn je brutálny a na nohe sedia perfektne. Maximálna spokojnosť, odporúčam všetkými desiatimi!</p>
+  </div>
+  <div class="w2c-row">
+    <a href="https://oopbuy.com/product/weidian/7614453190?originKeywordUrl=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7614453190&goods%3FinviteCode=XRRHAYES6" class="btn btn-green" target="_blank">W2C — OOPBUY ↗</a>
+    <a href="https://weidian.com/item.html?itemID=7614453190" class="btn btn-outline" target="_blank">Weidian direct</a>
+  </div>
+</div>
+
+<!-- ASICS -->
+<div class="item-wrap reveal" id="asics">
+  <div class="item-meta">
+    <span class="item-idx">03 / 08</span>
+    <span class="item-tag tag-fire">🔥 10/10</span>
+    <span class="item-tag tag-tts">TTS ✓</span>
+    <span class="item-price-big">€21.54</span>
+  </div>
+  <h3 class="item-heading">Asics GEL-Nimbus 10.1</h3>
+  <p class="item-subheading">"Black Midnight" — Modrá / Čierna / Strieborná — EU 44</p>
+  <div class="item-layout">
+    <div class="item-photo" onclick="openLightbox('asics_detail.png')">
+      <img src="asics_detail.png" alt="Asics GEL-Nimbus 10.1">
+      <div class="photo-label">Vlastná fotka — klikni ↗</div>
+    </div>
+    <div class="item-specs-panel">
+      <div class="spec-row"><span class="spec-k">Veľkosť</span><span class="spec-v">44 EU</span></div>
+      <div class="spec-row"><span class="spec-k">Farba</span><span class="spec-v">Modrá / Čierna / Strieborná</span></div>
+      <div class="spec-row"><span class="spec-k">Váha</span><span class="spec-v">981g / 797g bez boxu</span></div>
+      <div class="spec-row"><span class="spec-k">Cena</span><span class="spec-v">€21.54 / ¥170 / 518 CZK</span></div>
+      <div class="spec-row"><span class="spec-k">Ship do WH</span><span class="spec-v">4 dni</span></div>
+      <div class="spec-row"><span class="spec-k">QC fotky</span><span class="spec-v"><a href="https://imgur.com/a/8RaqRsO" target="_blank">↗ Imgur</a></span></div>
+      <div class="spec-row"><span class="spec-k">Weidian</span><span class="spec-v"><a href="https://weidian.com/item.html?itemID=7614423514" target="_blank">↗ Raw link</a></span></div>
+    </div>
+  </div>
+  <div class="video-wrap">
+    <span class="video-label">// Asics GEL-Nimbus 10.1 — video</span>
+    <video controls playsinline preload="metadata">
+      <source src="vid_asics.mov" type="video/mp4">
+    </video>
+  </div>
+  <div class="rating-row">
+    <div class="rating-cell"><span class="rating-num">10</span><span class="rating-denom">/10</span><span class="rating-cat">Kvalita</span></div>
+    <div class="rating-cell"><span class="rating-num">10</span><span class="rating-denom">/10</span><span class="rating-cat">Comfort</span></div>
+    <div class="rating-cell"><span class="rating-num">10</span><span class="rating-denom">/10</span><span class="rating-cat">Presnosť</span></div>
+  </div>
+  <div class="pc-row">
+    <div class="pc-block pros"><p class="pc-title plus">Plusy</p><ul><li>Extrémne mäkká podrážka</li><li>Skvelé na beh/nosenie</li></ul></div>
+    <div class="pc-block cons"><p class="pc-title minus">Mínusy</p><ul><li>Žiadne</li></ul></div>
+  </div>
+  <div class="feedback-block">
+    <p class="feedback-label">// Môj feedback</p>
+    <p class="feedback-text">Maximálne pohodlné, skvelý dizajn a v modrej vyzerajú ešte lepšie než na fotkách. Úplná spokojnosť!</p>
+  </div>
+  <div class="w2c-row">
+    <a href="https://oopbuy.com/product/weidian/7614423514?originKeywordUrl=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7614423514&goods%3FinviteCode=XRRHAYES6" class="btn btn-green" target="_blank">W2C — OOPBUY ↗</a>
+    <a href="https://weidian.com/item.html?itemID=7614423514" class="btn btn-outline" target="_blank">Weidian direct</a>
+  </div>
+</div>
+
+<!-- NIKE P-6000 -->
+<div class="item-wrap reveal" id="nikep6000">
+  <div class="item-meta">
+    <span class="item-idx">04 / 08</span>
+    <span class="item-tag tag-fire">🔥 10/10</span>
+    <span class="item-tag tag-tts">TTS ✓</span>
+    <span class="item-price-big">€21.56</span>
+  </div>
+  <h3 class="item-heading">Nike P-6000</h3>
+  <p class="item-subheading">"Metallic Silver" — Strieborná / Biela / Čierna — EU 44</p>
+  <div class="item-layout">
+    <div class="item-photo" onclick="openLightbox('nike_p6000.png')">
+      <img src="nike_p6000.png" alt="Nike P-6000">
+      <div class="photo-label">Vlastná fotka — klikni ↗</div>
+    </div>
+    <div class="item-specs-panel">
+      <div class="spec-row"><span class="spec-k">Veľkosť</span><span class="spec-v">44 EU</span></div>
+      <div class="spec-row"><span class="spec-k">Farba</span><span class="spec-v">Strieborná / Biela / Čierna</span></div>
+      <div class="spec-row"><span class="spec-k">Váha</span><span class="spec-v">772g / 611g bez boxu</span></div>
+      <div class="spec-row"><span class="spec-k">Cena</span><span class="spec-v">€21.56 / ¥170 / 518 CZK</span></div>
+      <div class="spec-row"><span class="spec-k">Ship do WH</span><span class="spec-v">5 dní</span></div>
+      <div class="spec-row"><span class="spec-k">QC fotky</span><span class="spec-v"><a href="https://imgur.com/a/Sp3e9ZJ" target="_blank">↗ Imgur</a></span></div>
+    </div>
+  </div>
+  <div class="video-wrap">
+    <span class="video-label">// Nike P-6000 — video</span>
+    <video controls playsinline preload="metadata">
+      <source src="vid_nike_p6000.mov" type="video/mp4">
+    </video>
+  </div>
+  <div class="rating-row">
+    <div class="rating-cell"><span class="rating-num">10</span><span class="rating-denom">/10</span><span class="rating-cat">Kvalita</span></div>
+    <div class="rating-cell"><span class="rating-num">10</span><span class="rating-denom">/10</span><span class="rating-cat">Comfort</span></div>
+    <div class="rating-cell"><span class="rating-num">10</span><span class="rating-denom">/10</span><span class="rating-cat">Presnosť</span></div>
+  </div>
+  <div class="pc-row">
+    <div class="pc-block pros"><p class="pc-title plus">Plusy</p><ul><li>Ľahučké, retro look je top</li><li>Na nohe sedia perfektne</li></ul></div>
+    <div class="pc-block cons"><p class="pc-title minus">Mínusy</p><ul><li>Žiadne</li></ul></div>
+  </div>
+  <div class="feedback-block">
+    <p class="feedback-label">// Môj feedback</p>
+    <p class="feedback-text">Ľahké, štýlové a maximálne pohodlné. Na nohe sedia skvele, za túto cenu top voľba!</p>
+  </div>
+  <div class="w2c-row">
+    <a href="https://oopbuy.com/product/weidian/7615088496?originKeywordUrl=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7615088496&goods%3FinviteCode=XRRHAYES6" class="btn btn-green" target="_blank">W2C — OOPBUY ↗</a>
+    <a href="https://weidian.com/item.html?itemID=7615088496" class="btn btn-outline" target="_blank">Weidian direct</a>
+  </div>
+</div>
+
+<!-- MIKINY -->
+<div class="cat-divider reveal" id="mikiny">
+  <p class="cat-count">// 05 — 06</p>
+  <h2 class="cat-name">Mikiny</h2>
+</div>
+
+<!-- BALENCIAGA -->
+<div class="item-wrap reveal" id="blcg">
+  <div class="item-meta">
+    <span class="item-idx">05 / 08</span>
+    <span class="item-tag tag-fire">🔥 10/10</span>
+    <span class="item-tag tag-tts">TTS ✓</span>
+    <span class="item-price-big">€36.99</span>
+  </div>
+  <h3 class="item-heading">Balenciaga Y2K</h3>
+  <p class="item-subheading">Zip-Up Hoodie "Washed Black" — Oversized — Veľkosť L</p>
+  <div class="item-layout">
+    <div class="item-photo" onclick="openLightbox('balenciaga_hoodie.png')">
+      <img src="balenciaga_hoodie.png" alt="Balenciaga Y2K Hoodie">
+      <div class="photo-label">Detail mikiny — klikni ↗</div>
+    </div>
+    <div class="item-specs-panel">
+      <div class="spec-row"><span class="spec-k">Veľkosť</span><span class="spec-v">L</span></div>
+      <div class="spec-row"><span class="spec-k">Farba</span><span class="spec-v">Washed Black</span></div>
+      <div class="spec-row"><span class="spec-k">Váha</span><span class="spec-v">1172g</span></div>
+      <div class="spec-row"><span class="spec-k">Cena</span><span class="spec-v">€36.99 / ¥291 / 887 CZK</span></div>
+      <div class="spec-row"><span class="spec-k">Ship do WH</span><span class="spec-v">7 dní</span></div>
+      <div class="spec-row"><span class="spec-k">Fit</span><span class="spec-v">Oversized</span></div>
+      <div class="spec-row"><span class="spec-k">QC fotky</span><span class="spec-v"><a href="https://imgur.com/a/CmcvoGd" target="_blank">↗ Imgur</a></span></div>
+      <div class="spec-row"><span class="spec-k">Taobao</span><span class="spec-v"><a href="https://h5.m.taobao.com/awp/core/detail.htm?ft=t&id=974028037348" target="_blank">↗ Raw link</a></span></div>
+      <div class="spec-row"><span class="spec-k">OOPBUY</span><span class="spec-v"><a href="https://oopbuy.com/product/1/974028037348?originKeywordUrl=https%3A%2F%2Fm.intl.taobao.com%2Fdetail%2Fdetail.html%3Fft%3Dt%26id%3D974028037348&goods%3FinviteCode=XRRHAYES6" target="_blank">↗ OOPBUY</a></span></div>
+    </div>
+  </div>
+  <div class="size-table-wrap">
+    <p class="size-table-title">// Size chart — Balenciaga Y2K Hoodie (cm)</p>
+    <table class="size-table">
+      <thead><tr><th>Veľkosť</th><th>Dĺžka</th><th>Hruď</th><th>Šírka ramien</th><th>Rukáv</th></tr></thead>
+      <tbody>
+        <tr><td>XS</td><td>61</td><td>58</td><td>60</td><td>51</td></tr>
+        <tr><td>S</td><td>63</td><td>59</td><td>62</td><td>52</td></tr>
+        <tr><td>M</td><td>65</td><td>60</td><td>64</td><td>53</td></tr>
+        <tr><td>L</td><td>67</td><td>61</td><td>66</td><td>54</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="video-wrap">
+    <span class="video-label">// Balenciaga Y2K — video</span>
+    <video controls playsinline preload="metadata">
+      <source src="vid_balenciaga.mov" type="video/mp4">
+    </video>
+  </div>
+  <div class="rating-row">
+    <div class="rating-cell"><span class="rating-num">10</span><span class="rating-denom">/10</span><span class="rating-cat">Kvalita</span></div>
+    <div class="rating-cell"><span class="rating-num">10</span><span class="rating-denom">/10</span><span class="rating-cat">Comfort</span></div>
+    <div class="rating-cell"><span class="rating-num">10</span><span class="rating-denom">/10</span><span class="rating-cat">Presnosť</span></div>
+  </div>
+  <div class="pc-row">
+    <div class="pc-block pros"><p class="pc-title plus">Plusy</p><ul><li>Kvalitný kovový double-zip</li><li>Ťažký materiál, washed efekt</li></ul></div>
+    <div class="pc-block cons"><p class="pc-title minus">Mínusy</p><ul><li>Špecifický štýl — nie pre každého</li></ul></div>
+  </div>
+  <div class="feedback-block">
+    <p class="feedback-label">// Môj feedback</p>
+    <p class="feedback-text">Materiál je ťažký a kvalitný, washed efekt vyzerá naživo brutálne. Masívny kovový double-zip, ktorý pôsobí veľmi kvalitne. Skvelý oversized strih, maximálna spokojnosť!</p>
+  </div>
+  <div class="w2c-row">
+    <a href="https://oopbuy.com/product/1/974028037348?originKeywordUrl=https%3A%2F%2Fm.intl.taobao.com%2Fdetail%2Fdetail.html%3Fft%3Dt%26id%3D974028037348&goods%3FinviteCode=XRRHAYES6" class="btn btn-green" target="_blank">W2C — OOPBUY ↗</a>
+    <a href="https://h5.m.taobao.com/awp/core/detail.htm?ft=t&id=974028037348" class="btn btn-outline" target="_blank">Taobao direct</a>
+  </div>
+</div>
+
+<!-- VETEMENTS -->
+<div class="item-wrap reveal" id="vetements">
+  <div class="item-meta">
+    <span class="item-idx">06 / 08</span>
+    <span class="item-tag tag-fire">🔥 10/10</span>
+    <span class="item-price-big">€37.87</span>
+  </div>
+  <h3 class="item-heading">Vetements Polizei</h3>
+  <p class="item-subheading">Fitted Zip-Up Hoodie — Čierna — Cropped strih — Veľkosť L</p>
+  <div class="item-layout">
+    <div class="item-photo" onclick="openLightbox('vetements_detail.jpg')">
+      <img src="vetements_detail.jpg" alt="Vetements Polizei detail">
+      <div class="photo-label">Detail — klikni ↗</div>
+    </div>
+    <div class="item-photo" onclick="openLightbox('vetements_hoodie.png')">
+      <img src="vetements_hoodie.png" alt="Vetements on body">
+      <div class="photo-label">On body — klikni ↗</div>
+    </div>
+  </div>
+  <div class="item-layout" style="grid-template-columns:1fr;margin-top:1px;">
+    <div class="item-specs-panel">
+      <div class="spec-row"><span class="spec-k">Veľkosť</span><span class="spec-v">L</span></div>
+      <div class="spec-row"><span class="spec-k">Farba</span><span class="spec-v">Čierna</span></div>
+      <div class="spec-row"><span class="spec-k">Váha</span><span class="spec-v">939g</span></div>
+      <div class="spec-row"><span class="spec-k">Cena</span><span class="spec-v">€37.87 / ¥299 / 911 CZK</span></div>
+      <div class="spec-row"><span class="spec-k">Ship do WH</span><span class="spec-v">3 dni</span></div>
+      <div class="spec-row"><span class="spec-k">Fit</span><span class="spec-v">Cropped (skrátený strih)</span></div>
+      <div class="spec-row"><span class="spec-k">QC fotky</span><span class="spec-v"><a href="https://imgur.com/a/uGjWs2v" target="_blank">↗ Imgur</a></span></div>
+      <div class="spec-row"><span class="spec-k">Weidian</span><span class="spec-v"><a href="https://weidian.com/item.html?itemID=7524607361" target="_blank">↗ Raw link</a></span></div>
+      <div class="spec-row"><span class="spec-k">OOPBUY</span><span class="spec-v"><a href="https://oopbuy.com/product/weidian/7524607361?originKeywordUrl=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7524607361%26wfr%3Dc%26source%3Dgoods_home%26ifr%3Ditemdetail&goods%3FinviteCode=XRRHAYES6" target="_blank">↗ OOPBUY</a></span></div>
+    </div>
+  </div>
+  <div class="size-table-wrap" style="margin-top:24px;">
+    <p class="size-table-title">// Size chart — Vetements Polizei (cm)</p>
+    <table class="size-table">
+      <thead><tr><th>Veľkosť</th><th>Obvod hrude</th><th>Šírka ramien</th><th>Šírka</th><th>Dĺžka rukáva</th></tr></thead>
+      <tbody>
+        <tr><td>S</td><td>112</td><td>56</td><td>56</td><td>58</td></tr>
+        <tr><td>M</td><td>116</td><td>58</td><td>58</td><td>59</td></tr>
+        <tr><td>L</td><td>120</td><td>60</td><td>60</td><td>60</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="rating-row">
+    <div class="rating-cell"><span class="rating-num">10</span><span class="rating-denom">/10</span><span class="rating-cat">Kvalita</span></div>
+    <div class="rating-cell"><span class="rating-num">10</span><span class="rating-denom">/10</span><span class="rating-cat">Comfort</span></div>
+    <div class="rating-cell"><span class="rating-num">10</span><span class="rating-denom">/10</span><span class="rating-cat">Presnosť</span></div>
+  </div>
+  <div class="pc-row">
+    <div class="pc-block pros"><p class="pc-title plus">Plusy</p><ul><li>Masívny kovový double-zip</li><li>Unikátny cropped strih</li></ul></div>
+    <div class="pc-block cons"><p class="pc-title minus">Mínusy</p><ul><li>Strih nemusí sadnúť každému</li></ul></div>
+  </div>
+  <div class="feedback-block">
+    <p class="feedback-label">// Môj feedback</p>
+    <p class="feedback-text">Kvalita materiálu je top, ten strih je fakt unikátny. Je to výrazne cropped, takže nemusí sadnúť každému, ale na postave vyzerá brutálne. Potešil ma hlavne kovový double-zip, ktorý pôsobí veľmi kvalitne.</p>
+  </div>
+  <div class="w2c-row">
+    <a href="https://oopbuy.com/product/weidian/7524607361?originKeywordUrl=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7524607361%26wfr%3Dc%26source%3Dgoods_home%26ifr%3Ditemdetail&goods%3FinviteCode=XRRHAYES6" class="btn btn-green" target="_blank">W2C — OOPBUY ↗</a>
+    <a href="https://weidian.com/item.html?itemID=7524607361" class="btn btn-outline" target="_blank">Weidian direct</a>
+  </div>
+</div>
+
+<!-- DOPLNKY -->
+<div class="cat-divider reveal" id="doplnky">
+  <p class="cat-count">// 07 — 08</p>
+  <h2 class="cat-name">Doplnky</h2>
+</div>
+
+<!-- CHROME HEARTS -->
+<div class="item-wrap reveal" id="chromeh">
+  <div class="item-meta">
+    <span class="item-idx">07 / 08</span>
+    <span class="item-tag tag-fire">🔥 10/10</span>
+    <span class="item-price-big">€1.88 / pár</span>
+  </div>
+  <h3 class="item-heading">Chrome Hearts Ponožky</h3>
+  <p class="item-subheading">11 párov — Multicolor — Univerzálna veľkosť</p>
+  <div class="item-layout">
+    <div class="item-photo" onclick="openLightbox('chrome_hearts_socks.png')">
+      <img src="chrome_hearts_socks.png" alt="Chrome Hearts ponožky">
+      <div class="photo-label">Vlastná fotka — klikni ↗</div>
+    </div>
+    <div class="item-specs-panel">
+      <div class="spec-row"><span class="spec-k">Veľkosť</span><span class="spec-v">Univerzálna</span></div>
+      <div class="spec-row"><span class="spec-k">Farba</span><span class="spec-v">Multicolor (11 párov)</span></div>
+      <div class="spec-row"><span class="spec-k">Váha</span><span class="spec-v">83g</span></div>
+      <div class="spec-row"><span class="spec-k">Cena</span><span class="spec-v">€1.88 / ¥15 / 45,69 CZK</span></div>
+      <div class="spec-row"><span class="spec-k">Ship do WH</span><span class="spec-v">3 dni</span></div>
+      <div class="spec-row"><span class="spec-k">QC fotky</span><span class="spec-v"><a href="https://imgur.com/a/rAmnsiK" target="_blank">↗ Imgur</a></span></div>
+      <div class="spec-row"><span class="spec-k">1688</span><span class="spec-v"><a href="https://detail.1688.com/offer/978838664623.html" target="_blank">↗ Raw link</a></span></div>
+      <div class="spec-row"><span class="spec-k">OOPBUY</span><span class="spec-v"><a href="https://oopbuy.com/product/0/978838664623?originKeywordUrl=https%3A%2F%2Fdetail.1688.com%2Foffer%2F978838664623.html&goods%3FinviteCode=XRRHAYES6" target="_blank">↗ OOPBUY</a></span></div>
+    </div>
+  </div>
+  <div class="video-wrap">
+    <span class="video-label">// Chrome Hearts ponožky — video</span>
+    <video controls playsinline preload="metadata">
+      <source src="vid_ponozky.mov" type="video/mp4">
+    </video>
+  </div>
+  <div class="rating-row">
+    <div class="rating-cell"><span class="rating-num">10</span><span class="rating-denom">/10</span><span class="rating-cat">Kvalita</span></div>
+    <div class="rating-cell"><span class="rating-num">10</span><span class="rating-denom">/10</span><span class="rating-cat">Value</span></div>
+    <div class="rating-cell"><span class="rating-num">10</span><span class="rating-denom">/10</span><span class="rating-cat">Presnosť</span></div>
+  </div>
+  <div class="pc-row">
+    <div class="pc-block pros"><p class="pc-title plus">Plusy</p><ul><li>Skvelá cena za 11 párov</li><li>Príjemný materiál, sedia perfektne</li></ul></div>
+    <div class="pc-block cons"><p class="pc-title minus">Mínusy</p><ul><li>Dosť vysoké — v lete bude teplo</li></ul></div>
+  </div>
+  <div class="feedback-block">
+    <p class="feedback-label">// Môj feedback</p>
+    <p class="feedback-text">Na výber je neskutočne veľa farieb, vybral som si tieto a vyzerajú naživo fakt dobre. Materiál je príjemný a sedia perfektne. Za túto cenu úplne perfektné, odporúčam vziať rovno viac párov!</p>
+  </div>
+  <div class="w2c-row">
+    <a href="https://oopbuy.com/product/0/978838664623?originKeywordUrl=https%3A%2F%2Fdetail.1688.com%2Foffer%2F978838664623.html&goods%3FinviteCode=XRRHAYES6" class="btn btn-green" target="_blank">W2C — OOPBUY ↗</a>
+    <a href="https://detail.1688.com/offer/978838664623.html" class="btn btn-outline" target="_blank">1688 direct</a>
+  </div>
+</div>
+
+<!-- BURBERRY -->
+<div class="item-wrap reveal" id="burberry">
+  <div class="item-meta">
+    <span class="item-idx">08 / 08</span>
+    <span class="item-tag tag-fire">🔥 10/10</span>
+    <span class="item-price-big">€5.72</span>
+  </div>
+  <h3 class="item-heading">Burberry Darčekový Box</h3>
+  <p class="item-subheading">Opasok 105cm + Peňaženka — Burberry Check</p>
+  <div class="item-layout">
+    <div class="item-photo" onclick="openLightbox('burberry_set.png')">
+      <img src="burberry_set.png" alt="Burberry set">
+      <div class="photo-label">Vlastná fotka — klikni ↗</div>
+    </div>
+    <div class="item-specs-panel">
+      <div class="spec-row"><span class="spec-k">Obsah</span><span class="spec-v">Opasok + Peňaženka + Box</span></div>
+      <div class="spec-row"><span class="spec-k">Veľkosť</span><span class="spec-v">Opasok 105 cm</span></div>
+      <div class="spec-row"><span class="spec-k">Farba</span><span class="spec-v">Burberry Check</span></div>
+      <div class="spec-row"><span class="spec-k">Váha</span><span class="spec-v">442g (celý box)</span></div>
+      <div class="spec-row"><span class="spec-k">Cena</span><span class="spec-v">€5.72 / ¥43 / 131 CZK</span></div>
+      <div class="spec-row"><span class="spec-k">Ship do WH</span><span class="spec-v">9 dní</span></div>
+      <div class="spec-row"><span class="spec-k">QC fotky</span><span class="spec-v"><a href="https://imgur.com/a/QMMQszT" target="_blank">↗ Imgur</a></span></div>
+      <div class="spec-row"><span class="spec-k">1688</span><span class="spec-v"><a href="https://detail.1688.com/offer/947347166428.html" target="_blank">↗ Raw link</a></span></div>
+      <div class="spec-row"><span class="spec-k">OOPBUY</span><span class="spec-v"><a href="https://oopbuy.com/product/0/947347166428?originKeywordUrl=https%3A%2F%2Fdetail.1688.com%2Foffer%2F947347166428.html&goods%3FinviteCode=XRRHAYES6" target="_blank">↗ OOPBUY</a></span></div>
+    </div>
+  </div>
+  <div class="video-wrap">
+    <span class="video-label">// Burberry darčekový set — video</span>
+    <video controls playsinline preload="metadata">
+      <source src="vid_burberry.mov" type="video/mp4">
+    </video>
+  </div>
+  <div class="rating-row">
+    <div class="rating-cell"><span class="rating-num">10</span><span class="rating-denom">/10</span><span class="rating-cat">Kvalita</span></div>
+    <div class="rating-cell"><span class="rating-num">10</span><span class="rating-denom">/10</span><span class="rating-cat">Presnosť</span></div>
+    <div class="rating-cell"><span class="rating-num">10</span><span class="rating-denom">/10</span><span class="rating-cat">Value</span></div>
+  </div>
+  <div class="pc-row">
+    <div class="pc-block pros"><p class="pc-title plus">Plusy</p><ul><li>Luxusný vzhľad, ideálne ako darček</li><li>Opasok aj peňaženka spracované precízne</li></ul></div>
+    <div class="pc-block cons"><p class="pc-title minus">Mínusy</p><ul><li>Ťažko sa balí naspäť do boxu</li></ul></div>
+  </div>
+  <div class="feedback-block">
+    <p class="feedback-label">// Môj feedback</p>
+    <p class="feedback-text">Luxusné spracovanie, box vyzerá naživo úplne profi. Opasok aj peňaženka sú spracované fakt precízne, ideálny kúsok na doplnenie outfitu alebo ako darček. 10/10!</p>
+  </div>
+  <div class="w2c-row">
+    <a href="https://oopbuy.com/product/0/947347166428?originKeywordUrl=https%3A%2F%2Fdetail.1688.com%2Foffer%2F947347166428.html&goods%3FinviteCode=XRRHAYES6" class="btn btn-green" target="_blank">W2C — OOPBUY ↗</a>
+    <a href="https://detail.1688.com/offer/947347166428.html" class="btn btn-outline" target="_blank">1688 direct</a>
+  </div>
+</div>
+
+<!-- VERDICT -->
+<section class="verdict" id="verdict">
+  <div class="verdict-inner">
+    <p class="verdict-label">// Záverečný verdikt</p>
+    <h2 class="verdict-title">Celkovo<br>10/10.</h2>
+    <p class="verdict-text">Celý haul hodnotím veľmi pozitívne. Pomer cena/kvalita je pri všetkých kúskoch neskutočný. Hlavne tie mikiny a Asicsy ma kvalitou materiálu naživo fakt dostali. Ak máte akékoľvek otázky k veľkostiam alebo spracovaniu, pokojne sa pýtajte v poste!</p>
+    <a href="https://oopbuy.com/register?inviteCode=XRRHAYES6" class="btn-dark" target="_blank">Registrácia na OOPBUY ↗</a>
+  </div>
+</section>
+
+<footer>
+  <p>Dalaj lama — Haul Review 2026</p>
+  <p>SSF-DHL-SK-1 — 8.4KG — OOPBUY</p>
+</footer>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">[ESC]</span>
+  <img src="" id="lightbox-img" alt="">
+</div>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if(e.key==='Escape') closeLightbox(); });
+</script>
+</body>
+</html>
