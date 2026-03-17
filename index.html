@@ -29,7 +29,7 @@ body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--tex
 ::-webkit-scrollbar{width:4px;}
 ::-webkit-scrollbar-track{background:var(--bg);}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
-
+ 
 /* HERO */
 .hero{min-height:100vh;display:grid;grid-template-rows:1fr auto;position:relative;overflow:hidden;border-bottom:1px solid var(--border);}
 .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 70% 40%,rgba(184,255,87,0.04) 0%,transparent 70%);}
@@ -39,7 +39,7 @@ body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--tex
 .hero-title span{color:var(--green);display:block;}
 .hero-subtitle{font-size:clamp(14px,2vw,18px);color:var(--muted);font-weight:300;margin-top:20px;max-width:500px;line-height:1.6;opacity:0;animation:fadeIn 0.5s 0.5s forwards;}
 .hero-image-wrap{position:absolute;right:0;top:0;bottom:0;width:42%;overflow:hidden;}
-.hero-image-wrap img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(20%) brightness(0.7);}
+.hero-image-wrap img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:brightness(0.7);}
 .hero-image-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--bg) 0%,transparent 40%);}
 .hero-stats-bar{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);position:relative;z-index:1;}
 .hero-stat{padding:24px 32px;border-right:1px solid var(--border);opacity:0;animation:fadeIn 0.5s forwards;}
@@ -50,7 +50,7 @@ body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--tex
 .stat-val{font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--white);display:block;line-height:1;}
 .stat-val.green{color:var(--green);}
 .stat-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);display:block;margin-top:6px;}
-
+ 
 @media(max-width:800px){
   .hero-image-wrap{display:none;}
   .hero-content{padding:80px 24px 32px;}
@@ -58,7 +58,7 @@ body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--tex
   .hero-stat:nth-child(2){border-right:none;}
   .hero-stat:nth-child(4){border-right:none;}
 }
-
+ 
 /* SHIPPING */
 .shipping{padding:80px 48px;max-width:1200px;margin:0 auto;}
 @media(max-width:800px){.shipping{padding:48px 24px;}}
@@ -72,7 +72,7 @@ body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--tex
 .info-val{font-size:15px;font-weight:600;color:var(--text);}
 .info-val.accent{color:var(--green);font-size:18px;}
 .box-photo{width:100%;max-width:420px;margin-bottom:48px;position:relative;overflow:hidden;border:1px solid var(--border);cursor:pointer;}
-.box-photo img{width:100%;height:320px;object-fit:cover;display:block;filter:grayscale(15%);transition:transform 0.5s ease,filter 0.3s;}
+.box-photo img{width:100%;height:320px;object-fit:cover;display:block;transition:transform 0.5s ease;}
 .box-photo:hover img{transform:scale(1.03);filter:grayscale(0%);}
 .timeline{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;}
 .timeline::-webkit-scrollbar{display:none;}
@@ -82,7 +82,7 @@ body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--tex
 .tl-dot{width:8px;height:8px;border-radius:50%;background:var(--green);margin-bottom:16px;box-shadow:0 0 12px var(--green);}
 .tl-date{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);margin-bottom:6px;display:block;}
 .tl-label{font-size:13px;font-weight:600;color:var(--text);}
-
+ 
 /* NAV */
 .sticky-nav{position:sticky;top:0;z-index:100;background:rgba(13,13,13,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;}
 .sticky-nav::-webkit-scrollbar{display:none;}
@@ -90,13 +90,13 @@ body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--tex
 @media(max-width:800px){.nav-inner{padding:0 16px;}}
 .nav-link{padding:14px 16px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.15s;}
 .nav-link:hover{color:var(--green);border-bottom-color:var(--green);}
-
+ 
 /* CATEGORY */
 .cat-divider{max-width:1200px;margin:80px auto 0;padding:0 48px;border-top:1px solid var(--border);padding-top:60px;}
 @media(max-width:800px){.cat-divider{padding:48px 24px 0;margin-top:48px;}}
 .cat-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,8vw,96px);color:var(--white);letter-spacing:0.02em;line-height:1;}
 .cat-count{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);margin-top:8px;}
-
+ 
 /* ITEM */
 .item-wrap{max-width:1200px;margin:0 auto;padding:48px 48px;border-bottom:1px solid var(--border);}
 @media(max-width:800px){.item-wrap{padding:40px 24px;}}
@@ -112,8 +112,7 @@ body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--tex
 .item-layout{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:24px;}
 @media(max-width:700px){.item-layout{grid-template-columns:1fr;}}
 .item-photo{background:var(--bg2);overflow:hidden;cursor:pointer;position:relative;min-height:300px;}
-.item-photo img{width:100%;height:100%;min-height:300px;object-fit:cover;display:block;filter:grayscale(10%);transition:transform 0.5s ease,filter 0.3s;}
-.item-photo:hover img{transform:scale(1.04);filter:grayscale(0%);}
+.item-photo img{width:100%;height:100%;min-height:300px;object-fit:cover;display:block;transition:transform 0.5s ease;}
 .photo-label{position:absolute;bottom:0;left:0;right:0;padding:12px 14px;background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);}
 .photo-label a{color:var(--green);text-decoration:none;}
 .item-specs-panel{background:var(--bg2);padding:28px;display:flex;flex-direction:column;gap:0;}
@@ -123,14 +122,14 @@ body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--tex
 .spec-v{font-size:13px;font-weight:500;color:var(--text);text-align:right;}
 .spec-v a{color:var(--green);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:11px;}
 .spec-v a:hover{text-decoration:underline;}
-
+ 
 /* RATING */
 .rating-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:1px;}
 .rating-cell{background:var(--bg2);padding:20px;text-align:center;}
 .rating-num{font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--green);line-height:1;display:block;}
 .rating-denom{font-size:12px;color:var(--muted);}
 .rating-cat{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-top:4px;display:block;}
-
+ 
 /* PROS/CONS */
 .pc-row{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-top:none;margin-bottom:24px;}
 @media(max-width:500px){.pc-row{grid-template-columns:1fr;}}
@@ -145,13 +144,13 @@ body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--tex
 .pc-block ul li{font-size:13px;color:var(--muted);line-height:1.5;padding-left:14px;position:relative;}
 .pc-block.pros ul li::before{content:'↑';position:absolute;left:0;color:var(--green);font-size:11px;}
 .pc-block.cons ul li::before{content:'↓';position:absolute;left:0;color:var(--red);font-size:11px;}
-
+ 
 /* FEEDBACK */
 .feedback-block{border:1px solid var(--green-border);background:var(--green-dim);padding:20px 24px;margin-bottom:24px;position:relative;}
 .feedback-block::before{content:'"';position:absolute;top:-10px;left:20px;font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--green);line-height:1;}
 .feedback-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--green);margin-bottom:10px;}
 .feedback-text{font-size:14px;color:rgba(232,232,232,0.8);line-height:1.7;}
-
+ 
 /* BUTTONS */
 .w2c-row{display:flex;gap:8px;flex-wrap:wrap;}
 .btn{display:inline-flex;align-items:center;gap:6px;padding:11px 20px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;font-weight:700;transition:all 0.15s;border:1px solid transparent;}
@@ -159,7 +158,7 @@ body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--tex
 .btn-green:hover{background:#d4ff7a;}
 .btn-outline{background:transparent;border-color:var(--border2);color:var(--muted);}
 .btn-outline:hover{border-color:var(--green);color:var(--green);}
-
+ 
 /* SIZE TABLE */
 .size-table-wrap{border:1px solid var(--border);margin-bottom:24px;overflow:hidden;}
 .size-table-title{background:var(--bg3);padding:12px 16px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border);}
@@ -168,7 +167,7 @@ body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--tex
 .size-table td{padding:10px 14px;font-size:13px;color:var(--text);border-bottom:1px solid var(--border);}
 .size-table tr:last-child td{border-bottom:none;}
 .size-table tr:hover td{background:var(--bg3);}
-
+ 
 /* VERDICT */
 .verdict{background:var(--green);padding:100px 48px;position:relative;overflow:hidden;}
 @media(max-width:800px){.verdict{padding:64px 24px;}}
@@ -179,33 +178,33 @@ body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--tex
 .verdict-text{font-size:16px;color:rgba(0,0,0,0.65);line-height:1.8;max-width:600px;margin-bottom:40px;}
 .btn-dark{background:var(--bg);color:var(--green);border:none;padding:14px 28px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;font-weight:700;display:inline-block;transition:background 0.15s;}
 .btn-dark:hover{background:#111;}
-
+ 
 /* FOOTER */
 footer{background:var(--bg);border-top:1px solid var(--border);padding:32px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
 @media(max-width:800px){footer{padding:24px;}}
 footer p{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);}
-
+ 
 /* VIDEO PLAYER */
 .video-wrap{position:relative;background:#000;border:1px solid var(--border);margin-bottom:1px;overflow:hidden;}
-.video-wrap video{width:100%;display:block;max-height:480px;object-fit:cover;}
+.video-wrap video{width:100%;display:block;height:auto;max-height:none;}
 .video-label{position:absolute;top:12px;left:12px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);background:rgba(0,0,0,0.6);padding:4px 8px;}
-
+ 
 /* LIGHTBOX */
 .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:10000;align-items:center;justify-content:center;cursor:zoom-out;}
 .lightbox.active{display:flex;}
 .lightbox img{max-width:90vw;max-height:90vh;object-fit:contain;}
 .lightbox-close{position:absolute;top:20px;right:24px;color:var(--green);font-family:'JetBrains Mono',monospace;font-size:20px;cursor:pointer;letter-spacing:0.1em;}
-
+ 
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(16px);transition:opacity 0.5s ease,transform 0.5s ease;}
 .reveal.visible{opacity:1;transform:none;}
-
+ 
 @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
 @keyframes slideUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:none;}}
 </style>
 </head>
 <body>
-
+ 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
@@ -232,7 +231,7 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1
     <div class="hero-stat"><span class="stat-val">32</span><span class="stat-label">Dní doručenia</span></div>
   </div>
 </section>
-
+ 
 <!-- SHIPPING -->
 <section class="shipping" id="shipping">
   <div class="section-header reveal">
@@ -266,7 +265,7 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1
     <div class="tl-step"><div class="tl-dot"></div><span class="tl-date">11. 03. 2026 — 11:49</span><p class="tl-label">Doručené ✓</p></div>
   </div>
 </section>
-
+ 
 <!-- NAV -->
 <nav class="sticky-nav">
   <div class="nav-inner">
@@ -283,13 +282,13 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1
     <a class="nav-link" href="#burberry">Burberry</a>
   </div>
 </nav>
-
+ 
 <!-- TOPÁNKY -->
 <div class="cat-divider reveal" id="topanky">
   <p class="cat-count">// 01 — 04</p>
   <h2 class="cat-name">Topánky</h2>
 </div>
-
+ 
 <!-- NB 2002R -->
 <div class="item-wrap reveal" id="nb2002r">
   <div class="item-meta">
@@ -340,7 +339,7 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1
     <a href="https://weidian.com/item.html?itemID=7611477107" class="btn btn-outline" target="_blank">Weidian direct</a>
   </div>
 </div>
-
+ 
 <!-- NB 9060 -->
 <div class="item-wrap reveal" id="nb9060">
   <div class="item-meta">
@@ -391,7 +390,7 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1
     <a href="https://weidian.com/item.html?itemID=7614453190" class="btn btn-outline" target="_blank">Weidian direct</a>
   </div>
 </div>
-
+ 
 <!-- ASICS -->
 <div class="item-wrap reveal" id="asics">
   <div class="item-meta">
@@ -441,7 +440,7 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1
     <a href="https://weidian.com/item.html?itemID=7614423514" class="btn btn-outline" target="_blank">Weidian direct</a>
   </div>
 </div>
-
+ 
 <!-- NIKE P-6000 -->
 <div class="item-wrap reveal" id="nikep6000">
   <div class="item-meta">
@@ -490,13 +489,13 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1
     <a href="https://weidian.com/item.html?itemID=7615088496" class="btn btn-outline" target="_blank">Weidian direct</a>
   </div>
 </div>
-
+ 
 <!-- MIKINY -->
 <div class="cat-divider reveal" id="mikiny">
   <p class="cat-count">// 05 — 06</p>
   <h2 class="cat-name">Mikiny</h2>
 </div>
-
+ 
 <!-- BALENCIAGA -->
 <div class="item-wrap reveal" id="blcg">
   <div class="item-meta">
@@ -560,7 +559,7 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1
     <a href="https://h5.m.taobao.com/awp/core/detail.htm?ft=t&id=974028037348" class="btn btn-outline" target="_blank">Taobao direct</a>
   </div>
 </div>
-
+ 
 <!-- VETEMENTS -->
 <div class="item-wrap reveal" id="vetements">
   <div class="item-meta">
@@ -622,13 +621,13 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1
     <a href="https://weidian.com/item.html?itemID=7524607361" class="btn btn-outline" target="_blank">Weidian direct</a>
   </div>
 </div>
-
+ 
 <!-- DOPLNKY -->
 <div class="cat-divider reveal" id="doplnky">
   <p class="cat-count">// 07 — 08</p>
   <h2 class="cat-name">Doplnky</h2>
 </div>
-
+ 
 <!-- CHROME HEARTS -->
 <div class="item-wrap reveal" id="chromeh">
   <div class="item-meta">
@@ -678,7 +677,7 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1
     <a href="https://detail.1688.com/offer/978838664623.html" class="btn btn-outline" target="_blank">1688 direct</a>
   </div>
 </div>
-
+ 
 <!-- BURBERRY -->
 <div class="item-wrap reveal" id="burberry">
   <div class="item-meta">
@@ -729,7 +728,7 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1
     <a href="https://detail.1688.com/offer/947347166428.html" class="btn btn-outline" target="_blank">1688 direct</a>
   </div>
 </div>
-
+ 
 <!-- VERDICT -->
 <section class="verdict" id="verdict">
   <div class="verdict-inner">
@@ -739,23 +738,51 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1
     <a href="https://oopbuy.com/register?inviteCode=XRRHAYES6" class="btn-dark" target="_blank">Registrácia na OOPBUY ↗</a>
   </div>
 </section>
-
-<footer>
-  <p>Dalaj lama — Haul Review 2026</p>
-  <p>SSF-DHL-SK-1 — 8.4KG — OOPBUY</p>
+ 
+<footer style="display:block;padding:48px;">
+  <div style="max-width:1200px;margin:0 auto;">
+ 
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--green);letter-spacing:0.1em;">// ZowHauls</span>
+      <div style="flex:1;height:1px;background:var(--border2);"></div>
+    </div>
+ 
+    <p style="font-size:14px;color:var(--muted);margin-bottom:28px;line-height:1.7;max-width:500px;">Najväčšia CZ/SK rep komunita. Tutoriály na nákup, haul reviews, QC pomoc, predaj a výmena itemov. Všetko na jednom mieste.</p>
+ 
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:48px;">
+      <a href="https://discord.com/invite/zowhauls" target="_blank" class="btn btn-outline">
+        Discord ↗
+      </a>
+      <a href="https://www.tiktok.com/@zow_hauls" target="_blank" class="btn btn-outline">
+        TikTok ↗
+      </a>
+      <a href="https://www.instagram.com/zow.hauls/" target="_blank" class="btn btn-outline">
+        Instagram ↗
+      </a>
+      <a href="https://zowhauls.cz/" target="_blank" class="btn btn-green">
+        ZowHauls.cz ↗
+      </a>
+    </div>
+ 
+    <div style="border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <p>Dalaj lama — Haul Review 2026</p>
+      <p>SSF-DHL-SK-1 — 8.4KG — OOPBUY</p>
+    </div>
+ 
+  </div>
 </footer>
-
+ 
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <span class="lightbox-close">[ESC]</span>
   <img src="" id="lightbox-img" alt="">
 </div>
-
+ 
 <script>
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.07 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
+ 
   function openLightbox(src) {
     document.getElementById('lightbox-img').src = src;
     document.getElementById('lightbox').classList.add('active');
